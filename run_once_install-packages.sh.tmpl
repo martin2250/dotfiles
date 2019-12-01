@@ -6,7 +6,7 @@
 {{ $packages = concat $packages ( list "fzf" "tmux" "bash-completion" ) }}
 
 {{/* essential utililties */}}
-{{ $packages = concat $packages ( list "htop" "nmon" "wget" "fd" "libqalculate" "vim" "nano" ) }}
+{{ $packages = concat $packages ( list "htop" "nmon" "wget" "fd" "libqalculate" "vim" "nano" "pigz" "pv" ) }}
 
 {{/* desktop stuff */}}
 {{ if hasKey . "monitors" }}
