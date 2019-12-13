@@ -189,11 +189,11 @@ exec_always --no-startup-id ~/.config/i3/scripts/rename-workspaces.py --norenumb
 ################################################################################
 # specific workspaces
 
-{{ $ws_move := "" }}
-{{ if ge (len .monitors) 2 -}}
-	{{ $ws_move = (print ", move workspace to output " (index .monitors 1)) -}}
-{{ end -}}
-for_window [instance="station"] move --no-auto-back-and-forth container to workspace number 4 {{- $ws_move }}
-for_window [instance="Mail"] move --no-auto-back-and-forth container to workspace number 4 {{- $ws_move }}
+#{{ $ws_move := "" }}
+#{{ if ge (len .monitors) 2 -}}
+#	{{ $ws_move = (print ", move workspace to output " (index .monitors 1)) -}}
+#{{ end -}}
+#for_window [instance="station"] move --no-auto-back-and-forth container to workspace number 4 {{- $ws_move }}
+#for_window [instance="Mail"] move --no-auto-back-and-forth container to workspace number 4 {{- $ws_move }}
 
-for_window [instance="gmpc"] move --no-auto-back-and-forth container to workspace number 5 {{- $ws_move }}
+#for_window [instance="gmpc"] move --no-auto-back-and-forth container to workspace number 5 {{- $ws_move }}
