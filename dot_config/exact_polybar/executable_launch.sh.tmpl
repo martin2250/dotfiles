@@ -2,8 +2,18 @@
 
 killall -q polybar
 
-while pgrep -u $UID -x polybar >/dev/null; do sleep 0.2; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 0.1; done
 
-{{ range .monitors }}
-polybar {{ . }} &
-{{end}}
+# disable workspace pinning if monitor is duplicated
+# eg. when connected to a beamer
+# this is checked by comparing the number of outputs reported by xrandr and polybar
+len_polybar=$((echo dummy && polybar --list-monitors) | wc -l)
+len_xrandr=$(xrandr --listmonitors | wc -l)
+
+if [ $len_polybar != $len_xrandr ]; then
+    export i3PINWS=false
+fi
+
+for monitor in $(polybar --list-monitors | sed -e 's/:.*$//g'); do
+    MONITOR=$monitor polybar primary &
+done
