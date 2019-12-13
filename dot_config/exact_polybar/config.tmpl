@@ -40,7 +40,7 @@ font-1 = "Iosevka Nerd Font:antialias=true:size=11;4"
 
 modules-left = i3
 modules-center = date
-modules-right = {{ if $data.is_laptop -}} battery backlight {{ end -}} temperature cpu memory pulseaudio
+modules-right = {{ if $data.is_laptop -}} battery backlight {{ end -}} temperature cpu system-cpu-frequency memory pulseaudio
 {{end}}
 
 ################################################################################
@@ -52,6 +52,7 @@ include-file = ~/.config/polybar/modules/memory.conf
 include-file = ~/.config/polybar/modules/temperature.conf
 include-file = ~/.config/polybar/modules/date.conf
 include-file = ~/.config/polybar/modules/pulseaudio.conf
+include-file = ~/.config/polybar/modules/system-cpu-frequency.conf
 
 {{/*- if eq .chezmoi.hostname "martin-PC" }}
 include-file = ~/.config/polybar/modules/mpd.conf
