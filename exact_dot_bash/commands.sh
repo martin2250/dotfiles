@@ -55,3 +55,7 @@ up(){
 	fi
 	cd "$d"
 }
+
+ytplay () {
+	run vlc $(youtube-dl -g -f mp4 "$1")
+}
