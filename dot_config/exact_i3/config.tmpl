@@ -171,7 +171,7 @@ bindsym $mod+N scratchpad show
 set $terminal /usr/bin/alacritty
 
 bindsym $mod+Return exec $terminal
-bindsym $mod+e exec $terminal -e ranger
+bindsym $mod+e exec nemo
 
 {{ $qalckey := "XF86Calculator" -}}
 {{ if eq .chezmoi.hostname "martin-x360" -}}
