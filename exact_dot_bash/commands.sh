@@ -57,5 +57,6 @@ up(){
 }
 
 ytplay () {
-	run vlc $(youtube-dl -g -f mp4 "$1")
+	url=$(clipget)
+	run vlc $(youtube-dl -g -f mp4 "${url%%&*}")
 }
