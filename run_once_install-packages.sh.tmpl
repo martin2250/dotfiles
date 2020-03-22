@@ -6,7 +6,10 @@
 {{ $packages = concat $packages ( list "fzf" "tmux" "bash-completion" ) }}
 
 {{/* essential utililties */}}
-{{ $packages = concat $packages ( list "htop" "nmon" "wget" "fd" "libqalculate" "vim" "nano" "pigz" "pv" ) }}
+{{ $packages = concat $packages ( list "htop" "nmon" "wget" "fd" "libqalculate" "vim" "nano" "pigz" "pv" "ncdu" ) }}
+
+{{/* python */}}
+{{ $packages = concat $packages ( list "python-numpy" "python-scipy" "python-matplotlib" "python-argcomplete" "autopep8" "python-pyserial" ) }}
 
 {{/* desktop stuff */}}
 {{ if hasKey . "monitors" }}
@@ -28,12 +31,6 @@
 
     {{/* commandline */}}
     {{ $packages = concat $packages ( list "imagemagick" ) }}
-
-    {{/* python */}}
-    {{ $packages = concat $packages ( list "python-numpy" "python-scipy" "python-matplotlib" "python-argcomplete" "autopep8" "python-pyserial" ) }}
-
-    {{/* misc */}}
-    {{ $packages = concat $packages ( list "thunderbird" "circuit-simulator" ) }}
 {{ end }}
 
 {{define "join"}}{{ range . -}}{{ print . }} {{ end }}{{end}}
