@@ -1,0 +1,12 @@
+{{- $name := promptString "full name" -}}
+{{- $email := promptString "email" -}}
+{{- $laptop := promptString "laptop?" -}}
+
+data:
+  monitors:
+  - HDMI1
+  is_laptop: {{ $laptop }}
+
+  user:
+    name: {{ $name }}
+    email: {{ $email }}
