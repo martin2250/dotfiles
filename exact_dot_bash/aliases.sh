@@ -8,7 +8,7 @@ alias ls='ls --color=auto'
 alias dd='dd status=progress'
 alias ddsync='dd status=progress conv=fdatasync'
 alias find='find 2>/dev/null'
-alias grep='grep -n --color=auto'
+alias grep='grep --color=auto'
 alias sc='systemctl'
 
 # custom commands
