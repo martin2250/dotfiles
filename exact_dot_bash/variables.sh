@@ -22,3 +22,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # disable "qt5ct: using qt5ct plugin" message
 export QT_LOGGING_RULES="qt5ct.debug=false"
+
+# import locale
+. ~/.config/locale.conf
