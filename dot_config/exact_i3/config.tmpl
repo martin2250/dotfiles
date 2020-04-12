@@ -34,10 +34,8 @@ bindsym $mod+Shift+Down  move down
 bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
-{{ if ge (len .monitors) 2 -}}
 bindsym $mod+Shift+Home move workspace to output left
 bindsym $mod+Shift+End  move workspace to output right
-{{ end -}}
 
 bindsym $mod+h split h
 bindsym $mod+v split v
@@ -56,34 +54,10 @@ bindsym $mod+$alt+Down  resize grow   height 5 px or 2 ppt
 bindsym $mod+$alt+Up    resize shrink height 5 px or 2 ppt
 bindsym $mod+$alt+Right resize grow   width  5 px or 2 ppt
 
-mode "resize" {
-	bindsym Left  resize shrink width  5 px or 2 ppt
-	bindsym Down  resize grow   height 5 px or 2 ppt
-	bindsym Up    resize shrink height 5 px or 2 ppt
-	bindsym Right resize grow   width  5 px or 2 ppt
-
-	bindsym Shift+Left  resize shrink width  20 px or 8 ppt
-	bindsym Shift+Down  resize grow   height 20 px or 8 ppt
-	bindsym Shift+Up    resize shrink height 20 px or 8 ppt
-	bindsym Shift+Right resize grow   width  20 px or 8 ppt
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-	bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-mode "move" {
-	bindsym Left move workspace to output left
-	bindsym Right move workspace to output right
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-	bindsym $mod+m mode "default"
-}
-
-bindsym $mod+m mode "move" 
+bindsym $mod+$alt+Shift+Left  resize shrink width  30 px or 12 ppt
+bindsym $mod+$alt+Shift+Down  resize grow   height 30 px or 12 ppt
+bindsym $mod+$alt+Shift+Up    resize shrink height 30 px or 12 ppt
+bindsym $mod+$alt+Shift+Right resize grow   width  30 px or 12 ppt
 
 ################################################################################
 # workspaces
