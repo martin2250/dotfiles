@@ -3,5 +3,6 @@ alacritty
 compton
 i3
 polybar
+zathura
 chromium-flags.conf
 {{end}}
