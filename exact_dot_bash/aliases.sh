@@ -39,7 +39,7 @@ if CMD_AVAILABLE htop; then
 fi
 
 if CMD_AVAILABLE ncdu; then
-	alias ncdu='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
+	alias ncdu='ncdu --color dark -x --exclude .git --exclude node_modules'
 fi
 
 if CMD_AVAILABLE perf; then
