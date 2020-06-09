@@ -46,7 +46,7 @@ function extract () {
 # go up x directories
 up(){
 	local d=""
-	for ((i=1 ; i <= $1 ; i++)); do
+	for ((i=1 ; i <= ${1:-1} ; i++)); do
 		d=$d/..
 	done
 	d=$(echo $d | sed 's/^\///')
