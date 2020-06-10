@@ -10,6 +10,7 @@ fi
 
 export EDITOR=/usr/bin/nano
 export TERMINAL=/usr/bin/alacritty
+export TERM=xterm-256color
 
 # enable colors in man
 export LESS_TERMCAP_mb=$'\E[01;31m'
