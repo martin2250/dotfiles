@@ -37,6 +37,12 @@ function mkcd
 	cd "$argv";
 end
 
+function ytplay
+	set url (clipget)
+	set url (string split '&' $url)[1]
+	run vlc (youtube-dl -g -f mp4 "$url")
+end
+
 set -u pure_threshold_command_duration -1
 set -u pure_enable_git false
 
