@@ -160,6 +160,10 @@ bindsym {{$qalckey}} exec $terminal -t QALC -e qalc
 ################################################################################
 # startup
 
+{{ if eq .chezmoi.hostname "martin-PC" -}}
+exec xrandr --output DP-0 --primary --left-of DVI-D-0 --mode 0x1ce
+{{ end -}}
+
 exec_always --no-startup-id setxkbmap -layout de,gr -variant nodeadkeys, -option grp:caps_switch grp_led:scroll kpdl:dot numpad:mac
 
 # background: https://triplelift.com/wp-content/uploads/2017/12/aleks-dahlberg-258314.jpg
