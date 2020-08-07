@@ -136,7 +136,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym Ctrl+F2 exec xbacklight -dec 1
 {{- end }}
 
-bindsym Print --release exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Print --release exec "scrot -f -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym Shift+Print --release exec "scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 bindsym Ctrl+Shift+Escape exec --no-startup-id gnome-system-monitor
