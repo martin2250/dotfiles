@@ -23,6 +23,9 @@ alias gca='git commit -a'
 alias gp='git pull --rebase'
 alias gpu='git push'
 
+# ripgrep filenames
+alias rgf='rg --files | rg'
+
 # clipboard actions
 alias clipget='xclip -selection c -o'	# get clipboard to stdout
 alias clipset='xclip -selection c'		# set clipboard from stdin
