@@ -63,6 +63,8 @@ WINDOW_ICONS = {
     'alacritty': '',
     'jetbrains-goland': 'ﳑ',
     'code-oss': fa.icons['code'],
+    'sublime_text': fa.icons['code'],
+    'sublime_merge': fa.icons['code-branch'],
     'atom': fa.icons['code'],
     'file-roller': fa.icons['compress'],
     'pnmain': fa.icons['microchip'],
