@@ -12,7 +12,7 @@ function lock {
         --ringvercolor=00000000 --insidevercolor=00000000 --verifcolor=00000000 \
         --ringwrongcolor=00000000 --insidewrongcolor=00000000 --wrongcolor=00000000 \
         --wrongtext="f*ck off!" --wrongsize=100 --wrongcolor=ffffffff \
-        --pass-power-keys --pass-screen-keys \
+        --pass-power-keys --pass-screen-keys --pass-media-keys \
         {{ if eq .chezmoi.hostname "martin-PC" -}} --no-verify {{- else -}} --ignore-empty-password {{- end }}
 }
 
