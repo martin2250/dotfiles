@@ -43,7 +43,7 @@ end
 function ytplay
 	set url (clipget)
 	set url (string split '&' $url)[1]
-	run vlc (youtube-dl -g -f mp4 "$url")
+	run vlc --no-video-title-show (youtube-dl -g -f mp4 "$url")
 end
 
 set -u pure_threshold_command_duration -1
