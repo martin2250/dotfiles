@@ -77,6 +77,7 @@ WINDOW_ICONS = {
 
     #media
     'gmpc': fa.icons['music'],
+    'clementine': fa.icons['music'],
     'blender': fa.icons['cube'],
     'gimp-2.8': fa.icons['image'],
     'feh': fa.icons['image'],
