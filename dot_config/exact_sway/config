@@ -1,0 +1,189 @@
+# todo: bemenu, screenshot, move to different monitor
+# sysctl kernel.sysrq=1
+# find key names with sudo libinput debug-events
+################################################################################
+# i3
+
+set $mod Mod4
+set $alt Mod1
+
+font Noto Display 11
+
+gaps inner 8
+gaps outer 4
+
+focus_wrapping no
+mouse_warping none
+workspace_auto_back_and_forth no
+focus_on_window_activation none
+
+default_border pixel 0
+
+################################################################################
+# windows
+
+floating_modifier $mod
+
+bindsym $mod+Shift+W kill
+bindsym $mod+d exec j4-dmenu-desktop
+
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+Home move workspace to output left
+bindsym $mod+Shift+End  move workspace to output right
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+f       fullscreen toggle
+bindsym $mod+shift+f fullscreen toggle global
+
+bindsym $mod+s layout stacking
+bindsym $mod+a layout tabbed
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+q focus parent
+bindsym $mod+w sticky toggle
+
+bindsym $mod+$alt+Left  resize shrink width  5 px or 2 ppt
+bindsym $mod+$alt+Down  resize grow   height 5 px or 2 ppt
+bindsym $mod+$alt+Up    resize shrink height 5 px or 2 ppt
+bindsym $mod+$alt+Right resize grow   width  5 px or 2 ppt
+
+bindsym $mod+$alt+Shift+Left  resize shrink width  30 px or 12 ppt
+bindsym $mod+$alt+Shift+Down  resize grow   height 30 px or 12 ppt
+bindsym $mod+$alt+Shift+Up    resize shrink height 30 px or 12 ppt
+bindsym $mod+$alt+Shift+Right resize grow   width  30 px or 12 ppt
+
+################################################################################
+# workspaces
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+################################################################################
+# colors
+
+set $fg     #D8DEE9
+set $fg_alt #D8DEE9
+set $bg     #00101010
+set $bg_alt #00606060
+
+# class                 border  backgr. text indicator child_border
+client.focused          $fg     $bg_alt $fg  $bg       $bg
+client.focused_inactive $fg     $bg_alt $fg  $bg       $bg
+client.unfocused        $fg     $bg     $fg  $bg       $bg
+client.urgent           $fg     $bg     $fg  $bg       $bg
+client.placeholder      $fg     $bg     $fg  $bg       $bg
+
+################################################################################
+# keybindings
+
+bindsym $mod+Shift+r reload
+
+bindsym --locked XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym --locked XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym --locked XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle #mute
+
+bindsym --locked XF86MonBrightnessUp exec light -A 5
+bindsym --locked XF86MonBrightnessDown exec light -U 5
+
+bindsym --locked XF86PowerOff exec systemctl suspend
+
+bindsym $mod+l exec 'grim -g "$(slurp)" - | wl-copy -t image/png'
+
+bindsym Ctrl+Shift+Escape exec --no-startup-id gnome-system-monitor
+
+bindsym $mod+B move scratchpad
+bindsym $mod+N scratchpad show
+
+set $terminal /usr/bin/alacritty
+
+bindsym $mod+Return exec $terminal
+bindsym XF86Calculator exec $terminal -t QALC -e qalc
+bindsym $mod+e exec nemo
+
+# timeout 300 'swaylock -f -c 000000' \
+exec swayidle -w \
+    timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -c 0000A055 -e -F'
+
+bar {
+    swaybar_command waybar
+}
+
+include /etc/sway/config.d/*
+
+input type:keyboard {
+    xkb_model "pc105"
+	xkb_layout "de,gr"
+	xkb_variant "nodeadkeys,"
+	xkb_options "grp:caps_toggle,grp_led:caps,kpdl:dot,numpad:mac"
+}
+
+input type:touchpad {
+    natural_scroll enabled
+    tap            enabled
+}
+
+# laptop display
+output "eDP-1" {
+    # # moved down, so an external monitor can be positioned above
+    # pos 0 1440
+    pos 0 0
+}
+bindsym $mod+p output eDP-1 toggle
+
+# 1440p monitor
+output "Unknown HP X27i CNK0191DF8" {
+    mode 2560x1440@144Hz
+    pos 1920 0
+    # transform 270
+}
+
+# background
+output "*" {
+    bg /home/martin/Pictures/aleks-dahlberg-258314.jpg fill
+}
+
+# run ipc tweaks
+exec_always --no-startup-id kill (pgrep -f sway-ipc.py); python ~/.config/sway/sway-ipc.py
