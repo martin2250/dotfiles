@@ -186,4 +186,4 @@ output "*" {
 }
 
 # run ipc tweaks
-exec_always --no-startup-id kill (pgrep -f sway-ipc.py); python ~/.config/sway/sway-ipc.py
+exec_always --no-startup-id python ~/.config/sway/sway-blur.py

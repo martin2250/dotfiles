@@ -1,5 +1,15 @@
 #!/usr/bin/python
+import subprocess, os, signal, sys
 import i3ipc
+
+# kill other running instances
+proc = subprocess.run(['pgrep' , '-f', sys.argv[0]], stdout=subprocess.PIPE)
+if proc.returncode == 0:
+    for pid in proc.stdout.splitlines():
+        pid = int(pid)
+        if pid != os.getpid():
+            print(f'kill other running instance {pid}')
+            os.kill(pid, signal.SIGTERM)
 
 ipc = i3ipc.Connection()
 
