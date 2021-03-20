@@ -1,6 +1,7 @@
 # todo: bemenu, screenshot, move to different monitor
 # sysctl kernel.sysrq=1
 # find key names with sudo libinput debug-events
+# MOZ_ENABLE_WAYLAND=1 in /etc/environment
 ################################################################################
 # i3
 
@@ -185,5 +186,6 @@ output "*" {
     bg /home/martin/Pictures/aleks-dahlberg-258314.jpg fill
 }
 
-# run ipc tweaks
-exec_always --no-startup-id python ~/.config/sway/sway-blur.py
+# daemons
+exec_always --no-startup-id pkill -f ~/.config/sway/sway-blur.py; python ~/.config/sway/sway-blur.py
+exec_always pkill kanshi; exec kanshi
