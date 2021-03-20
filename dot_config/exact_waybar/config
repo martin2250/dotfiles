@@ -2,63 +2,21 @@
     "height": 24,
 
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["clock"],
+    "modules-center": ["sway/language", "clock"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "tray"],
 
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+    // center modules
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
     },
+    
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": ""
         }
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "clock": {
-        "format": "{:%Y-%m-%d %H:%M}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>"
-    },
-    "cpu": {
-        "interval": 1,
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "interval": 1,
-        "format": "{used:0.1f}GB "
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": [""]
-    },
-    "battery": {
-        "interval": 1,
-        "states": {
-            "overfull": 100,
-            "full": 80,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {power}W {icon}",
-
-        "format-charging": "{capacity}% {power:0.1f}W ",
-        "format-plugged": "{capacity}% {power:0.1f}W ",
-        "format-full": "{capacity}% {power:0.1f}W ",
-        "format-full": "{capacity}% {power:0.1f}W ",
-
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
@@ -77,5 +35,39 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "interval": 1,
+        "format": "{used:0.1f}GB "
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": [""]
+    },
+    "battery": {
+        "interval": 1,
+        "states": {
+            "full": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}% {power}W",
+        "format-charging": " {icon} {capacity}% {power:0.1f}W",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "tray": {
+        "spacing": 10
     }
 }
