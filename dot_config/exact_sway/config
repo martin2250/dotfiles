@@ -26,7 +26,7 @@ default_border pixel 0
 floating_modifier $mod
 
 bindsym $mod+Shift+W kill
-bindsym $mod+d exec j4-dmenu-desktop
+bindsym $mod+d exec j4-dmenu-desktop --dmenu='bemenu -i'
 
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
