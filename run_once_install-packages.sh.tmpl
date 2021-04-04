@@ -3,31 +3,31 @@
 {{ $packages := list }}
 
 {{/* shell */}}
-{{ $packages = concat $packages ( list "fzf" "tmux" "bash-completion" ) }}
+{{ $packages = concat $packages ( list "fzf" ) }}
 
 {{/* essential utililties */}}
-{{ $packages = concat $packages ( list "htop" "nmon" "wget" "fd" "libqalculate" "vim" "nano" "pigz" "pv" "ncdu" "jq" "screen" "usbutils" "ripgrep" "croc" ) }}
+{{ $packages = concat $packages ( list "htop" "nmon" "wget" "fd" "libqalculate" "nano" "pigz" "pv" "ncdu" "jq" "screen" "usbutils" "ripgrep" ) }}
 
 {{/* python */}}
-{{ $packages = concat $packages ( list "python-numpy" "python-scipy" "python-matplotlib" "python-argcomplete" "autopep8" "python-pyserial" ) }}
+{{ $packages = concat $packages ( list "python-numpy" "python-scipy" "python-matplotlib" "python-pyserial" ) }}
 
 {{/* desktop stuff */}}
 {{ if hasKey . "monitors" }}
     {{/* i3 */}}
-    {{ $packages = concat $packages ( list "i3-gaps" "i3lock-color-git" "compton" "polybar" "nerd-fonts-iosevka" "noto-fonts" ) }}
-    {{ $packages = concat $packages ( list "dmenu" "j4-dmenu-desktop" "feh" "scrot" "xclip" ) }}
+    # "i3-gaps" "i3lock-color-git" "compton" "polybar" "nerd-fonts-iosevka" "noto-fonts"
+    # "dmenu" "j4-dmenu-desktop" "feh" "scrot" "xclip"
     {{ $packages = concat $packages ( list "alacritty" ) }}
     {{ $packages = concat $packages ( list "python-fontawesome" "python-i3ipc" ) }}
 
     {{ if .is_laptop }}
-    	{{ $packages = concat $packages ( list "xorg-xbacklight"  ) }}
+    	# "xorg-xbacklight"
 	{{ end }}
 
     {{/* media */}}
     {{ $packages = concat $packages ( list "inkscape" "audacity" "gimp" "vlc" "pix" ) }}
 
     {{/* coding */}}
-    {{ $packages = concat $packages ( list "code" ) }}
+    # "code"
 
     {{/* commandline */}}
     {{ $packages = concat $packages ( list "imagemagick" ) }}
