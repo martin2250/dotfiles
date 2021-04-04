@@ -38,8 +38,10 @@ bindsym $mod+Shift+Down  move down
 bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+Shift+Home move workspace to output left
-bindsym $mod+Shift+End  move workspace to output right
+bindsym $mod+Shift+Home  move workspace to output left
+bindsym $mod+Shift+End   move workspace to output right
+bindsym $mod+Shift+Prior move workspace to output up
+bindsym $mod+Shift+Next  move workspace to output down
 
 bindsym $mod+h split h
 bindsym $mod+v split v
