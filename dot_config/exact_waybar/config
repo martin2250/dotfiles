@@ -42,7 +42,7 @@
     },
     "memory": {
         "interval": 1,
-        "format": "{used:0.1f}GB "
+        "format": "{}%"
     },
     "backlight": {
         "format": "{percent}% {icon}",
