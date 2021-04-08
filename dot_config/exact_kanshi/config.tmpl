@@ -4,11 +4,18 @@ profile {
 	output eDP-1 position 0,1080
 }
 
-# both monitors in my room
+## both monitors in my room, left one vertical
+#profile {
+#	output "Unknown HP X27i CNK0191DF8" position 0,0 transform 90
+#	output "Philips Consumer Electronics Company 273ELH AU11226006125" position 1440,400
+#	output eDP-1 position 1440,1480
+#}
+
+# both monitors in my room, left one horizontal
 profile {
-	output "Unknown HP X27i CNK0191DF8" position 0,0 transform 90
-	output "Philips Consumer Electronics Company 273ELH AU11226006125" position 1440,400
-	output eDP-1 position 1440,1480
+	output "Unknown HP X27i CNK0191DF8" position 0,0
+	output "Philips Consumer Electronics Company 273ELH AU11226006125" position 2560,360
+	output eDP-1 position 640,1440
 }
 
 # no external monitor
