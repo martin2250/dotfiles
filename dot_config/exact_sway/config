@@ -183,7 +183,8 @@ bindsym $mod+p output eDP-1 toggle
 
 # 1440p monitor
 output "Unknown HP X27i CNK0191DF8" {
-    mode 2560x1440@144Hz
+    # mode 2560x1440@144Hz
+    mode 2560x1440@59.951Hz
     pos 1920 0
     # transform 270
 }
