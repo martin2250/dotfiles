@@ -49,7 +49,7 @@ end
 set -u pure_threshold_command_duration -1
 set -u pure_enable_git false
 
-set -x PATH     $PATH ~/bin ~/.local/bin/
+set -x PATH     $PATH ~/bin ~/.local/bin/ ~/.cargo/bin/
 set -x EDITOR   /usr/bin/nano
 set -x TERMINAL /usr/bin/alacritty
 set -x TERM     xterm-256color
