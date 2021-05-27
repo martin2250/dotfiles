@@ -55,8 +55,8 @@ set -x TERM     xterm-256color
 
 if test -x /usr/bin/lsd
 	alias ls=lsd
-	alias la='lsd -lA --blocks "permission,user,size,date,name"'
-	alias lt='lsd --tree --depth 2'
+	alias la='lsd -lA --blocks="permission,user,size,date,name"'
+	alias lt='lsd --tree --depth=2'
 else
 	alias la='ls -hoa'
 end
