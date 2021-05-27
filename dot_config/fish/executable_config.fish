@@ -7,7 +7,6 @@ alias grep='grep --color=auto'
 alias sc='systemctl'
 
 # custom commands
-alias la='ls -thora'
 alias open='run xdg-open'
 alias pdfcombine='gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile='
 alias udevreload='sudo udevadm control --reload-rules; sudo udevadm trigger;'
@@ -53,3 +52,11 @@ set -x PATH     $PATH ~/bin ~/.local/bin/ ~/.cargo/bin/
 set -x EDITOR   /usr/bin/nano
 set -x TERMINAL /usr/bin/alacritty
 set -x TERM     xterm-256color
+
+if test -x /usr/bin/lsd
+	alias ls=lsd
+	alias la='lsd -lA --blocks "permission,user,size,date,name"'
+	alias lt='lsd --tree --depth 2'
+else
+	alias la='ls -hoa'
+end
