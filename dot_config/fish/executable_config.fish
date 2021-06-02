@@ -11,6 +11,9 @@ alias open='run xdg-open'
 alias pdfcombine='gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile='
 alias udevreload='sudo udevadm control --reload-rules; sudo udevadm trigger;'
 
+alias term='run alacritty --working-directory .'
+alias path='readlink -f'
+
 # cd to directory and list files (has to be here so ls alias is already available)
 function cdl
 	cd "$1";
