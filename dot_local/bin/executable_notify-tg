@@ -1,0 +1,58 @@
+#!/usr/bin/python
+
+import json
+import sys
+from pathlib import Path
+from urllib.request import Request, urlopen
+
+token_path = Path('~/.local/notify_tg.json').expanduser()
+
+if token_path.exists():
+    with open(token_path) as f:
+        config = json.load(f)
+    token = config['token']
+    chatid = config['chatid']
+else:
+    print(f'Configuration not found in {token_path}.')
+    token = input('enter telegram token: ')
+    if not token or ':' not in token:
+        print('invalid token')
+        exit(1)
+    token.removeprefix('bot')
+    chatid = input('enter telegram chat id: ')
+    if not chatid:
+        print('invalid chat id')
+        exit(1)
+    config = {
+        'token': token,
+        'chatid': chatid,
+    }
+    token_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(token_path, 'w') as f:
+        json.dump(config, f)
+
+if len(sys.argv) == 2:
+    text = sys.argv[1]
+else:
+    import platform
+    text = f'notification from {platform.node()}'
+
+
+custom_headers = {
+    'Content-Type': 'application/json'
+}
+
+post_data = {
+    'chat_id': chatid,
+    'text': text,
+}
+
+req = Request(
+    f'https://api.telegram.org/bot{token}/sendMessage',
+    json.dumps(post_data).encode('ascii'),
+    custom_headers
+)
+
+with urlopen(req) as resp:
+    if resp.getcode() != 200:
+        print(resp)
