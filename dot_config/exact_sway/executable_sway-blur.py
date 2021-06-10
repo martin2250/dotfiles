@@ -12,6 +12,7 @@ def on_window_focus(ipc: i3ipc.Connection, e):
         opaque = c.focused
         opaque |= 'YouTube' in (c.name or '')
         opaque |= 'Netflix' in (c.name or '')
+        opaque |= 'Zoom' in (c.name or '')
         opaque |= 'vlc' == c.window_class
         if opaque:
             c.command('opacity 1')
