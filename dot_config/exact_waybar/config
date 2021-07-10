@@ -3,7 +3,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/language", "clock"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "temperature", "cpu", "memory", "backlight", "battery", "tray"],
 
     "clock": {
         "format": "{:%Y-%m-%d %H:%M}",
@@ -69,5 +69,12 @@
     },
     "tray": {
         "spacing": 10
+    },
+    "temperature": {
+        "thermal-zone": 0,
+        "interval": 1,
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
     }
 }
