@@ -165,7 +165,7 @@ input type:keyboard {
     xkb_model "pc105"
 	xkb_layout "de,gr"
 	xkb_variant "nodeadkeys,"
-	xkb_options "grp:caps_toggle,grp_led:caps,kpdl:dot,numpad:mac"
+	xkb_options "grp:caps_switch,grp_led:caps,kpdl:dot,numpad:mac"
 }
 
 input type:touchpad {
