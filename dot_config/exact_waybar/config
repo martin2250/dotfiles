@@ -37,7 +37,7 @@
     },
     "cpu": {
         "interval": 1,
-        "format": "{usage}% ",
+        "format": "{max_frequency} GHz {usage}% ",
         "on-click": "gnome-system-monitor"
     },
     "memory": {
