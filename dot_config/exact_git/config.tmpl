@@ -5,6 +5,9 @@
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 
+[init]
+	defaultbranch=master
+
 [commit]
 	verbose = true
 
@@ -15,20 +18,20 @@
 	status = auto
 
 [alias]
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 [pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
 
 [delta]
-    plus-style = "syntax #012800"
-    minus-style = "syntax #340001"
-    syntax-theme = Monokai Extended
-    navigate = true
+	plus-style = "syntax #012800"
+	minus-style = "syntax #340001"
+	syntax-theme = Monokai Extended
+	navigate = true
 
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
