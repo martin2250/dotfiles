@@ -63,3 +63,14 @@ if test -x /usr/bin/lsd
 else
 	alias la='ls -hoa'
 end
+
+function pyc
+	set lines "import sys, os"
+	set -a lines "import numpy as np"
+	set -a lines "import matplotlib.pyplot as plt"
+	set command ""
+	for line in $lines
+		set command (printf "%s%s;print('%s');" $command $line $line)
+	end
+	python -i -c "$command"
+end
