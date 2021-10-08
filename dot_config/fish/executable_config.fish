@@ -74,3 +74,10 @@ function pyc
 	end
 	python -i -c "$command"
 end
+
+function casino
+	set filename_casino /tmp/speiseplan.pdf
+	wget https://www.aserv.kit.edu/downloads/VAM-CAT/Speiseplan_deutsch.pdf -O $filename_casino
+	xdg-open $filename_casino
+	rm $filename_casino
+end
