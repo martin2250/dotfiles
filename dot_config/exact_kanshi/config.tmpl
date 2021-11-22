@@ -47,9 +47,16 @@ profile {
 	output eDP-1 position 1080,840
 }
 
-# office @ ETP, both monitors
+# office @ ETP, both monitors, old monitor on left
 profile {
 	output eDP-1 position 0,1050
 	output "Goldstar Company Ltd 23MB35 " position 1920,0 transform 90
 	output "Philips Consumer Electronics Company Philips 220SW FE30834233180" position 240,0
+}
+
+# office @ ETP, boss' monitor plus vertical
+profile {
+	output eDP-1 position 640,1440
+	output "Goldstar Company Ltd 23MB35 " position 2560,0 transform 90
+	output "Goldstar Company Ltd LG Ultra HD 0x000046BA" mode 2560x1440 position 0,0
 }

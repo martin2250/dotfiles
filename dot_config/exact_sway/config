@@ -207,3 +207,7 @@ for_window [app_id="firefox" title="Firefox — Sharing Indicator"] {
 for_window [class="Geant4"] {
     floating enable
 }
+
+for_window [class="Vivado" title="JidePopup"] {
+    floating enable
+}
