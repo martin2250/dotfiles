@@ -199,6 +199,7 @@ output "*" {
 # daemons
 exec_always --no-startup-id pkill -f ~/.config/sway/sway-blur.py; python ~/.config/sway/sway-blur.py
 exec_always pkill kanshi; exec kanshi
+exec_always pkill gammastep; exec gammastep
 
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] {
     kill
