@@ -75,9 +75,10 @@ function pyc
 	python -i -c "$command"
 end
 
-function casino
-	set filename_casino /tmp/speiseplan.pdf
-	wget https://www.aserv.kit.edu/downloads/VAM-CAT/Speiseplan_deutsch.pdf -O $filename_casino
-	xdg-open $filename_casino
-	rm $filename_casino
+function yays
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+end
+
+function yayr
+    yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 end

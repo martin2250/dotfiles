@@ -1,0 +1,28 @@
+#!/usr/bin/python
+import datetime
+import requests
+import tempfile
+import subprocess
+
+now = datetime.datetime.now()
+
+nextweek = False
+# on saturday / sunday, get next week
+nextweek |= now.weekday() > 4
+# on friday, get next week after 2pm
+nextweek |= (now.weekday() == 4) and (now.hour > 14)
+# skip to next week?
+if nextweek:
+    now += datetime.timedelta(days=3)
+
+week = now.isocalendar().week
+url = f'https://www.aserv.kit.edu/downloads/VAM-CAT/Speiseplan_deutsch%20KW{week:02d}.pdf'
+print(f'downloading {url}')
+
+r = requests.get(url, allow_redirects=True)
+assert r.ok, r.reason
+
+with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp:
+    temp.file.write(r.content)
+    temp.close()
+    subprocess.run(['xdg-open', temp.name])
