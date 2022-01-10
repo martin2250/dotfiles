@@ -17,6 +17,10 @@ if nextweek:
 
 week = now.isocalendar().week
 url = f'https://www.aserv.kit.edu/downloads/VAM-CAT/Speiseplan_deutsch%20KW{week:02d}.pdf'
+
+# nvm, they've changed it back...
+url = 'https://www.aserv.kit.edu/downloads/VAM-CAT/Speiseplan_deutsch.pdf'
+
 print(f'downloading {url}')
 
 r = requests.get(url, allow_redirects=True)
