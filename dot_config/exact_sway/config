@@ -203,8 +203,10 @@ exec_always --no-startup-id pkill -f ~/.config/sway/sway-blur.py; python ~/.conf
 exec_always pkill kanshi; exec kanshi
 exec_always pkill gammastep; exec gammastep
 
-for_window [app_id="firefox" title="Firefox — Sharing Indicator"] {
-    kill
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+for_window [app_id="firefox" floating] {
+    resize set 65ppt 65ppt
+    move position center
 }
 
 for_window [class="Geant4"] {
