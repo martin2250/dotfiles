@@ -216,3 +216,6 @@ for_window [class="Geant4"] {
 for_window [class="Vivado" title="JidePopup"] {
     floating enable
 }
+
+# zoom popups
+for_window [title="^zoom$" app_id="^zoom$"] floating enable
