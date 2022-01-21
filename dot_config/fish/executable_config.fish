@@ -68,6 +68,7 @@ function pyc
 	set lines "import sys, os"
 	set -a lines "import numpy as np"
 	set -a lines "import matplotlib.pyplot as plt"
+	set -a lines "from rich import pretty; pretty.install()"
 	set command ""
 	for line in $lines
 		set command (printf "%s%s;print('%s');" $command $line $line)
