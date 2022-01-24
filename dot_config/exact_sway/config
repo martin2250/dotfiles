@@ -135,7 +135,7 @@ bindsym --locked XF86MonBrightnessDown exec light -U 5
 
 bindsym --locked XF86PowerOff exec systemctl suspend
 
-bindsym $mod+l exec 'grim -g "$(slurp)" - | wl-copy -t image/png'
+bindsym $mod+l exec bash ~/.config/sway/screenshot.sh
 
 bindsym Ctrl+Shift+Escape exec --no-startup-id gnome-system-monitor
 
