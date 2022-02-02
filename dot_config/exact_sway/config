@@ -218,7 +218,10 @@ for_window [class="Vivado" title="JidePopup"] {
 }
 
 # zoom popups (eg. XXX has started sharing screen or crash report)
-for_window [title="^zoom$" app_id="^zoom$"] floating enable
+for_window [title="^zoom$" app_id="^zoom$"] {
+    floating enable
+    inhibit_idle open
+}
 
 # keep screen on during zoom meeting
 for_window [title="^Zoom Meeting$"] inhibit_idle open
