@@ -1,5 +1,6 @@
 {{- $name := promptString "full name" -}}
 {{- $email := promptString "email" -}}
+{{- $signingkey := promptString "GPG signingkey" -}}
 {{- $laptop := promptString "laptop?" -}}
 
 data:
@@ -10,3 +11,4 @@ data:
   user:
     name: {{ $name }}
     email: {{ $email }}
+    signingkey: {{ $signingkey }}

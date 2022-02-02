@@ -56,6 +56,7 @@ set -x EDITOR   /usr/bin/nano
 set -x PAGER    less -r
 set -x TERMINAL /usr/bin/alacritty
 set -x TERM     xterm-256color
+set -gx GPG_TTY (tty)
 
 if test -x /usr/bin/lsd
 	alias ls=lsd
