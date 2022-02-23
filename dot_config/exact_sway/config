@@ -26,7 +26,8 @@ default_border pixel 0
 floating_modifier $mod
 
 bindsym $mod+Shift+W kill
-bindsym $mod+d exec j4-dmenu-desktop --dmenu='bemenu -i'
+bindsym $mod+d exec fuzzel -T 'alacritty -e'
+# bindsym $mod+d exec j4-dmenu-desktop --dmenu='bemenu -i'
 
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
@@ -184,6 +185,7 @@ output "eDP-1" {
     pos 0 0
 }
 bindsym $mod+p output eDP-1 toggle
+bindsym --release ctrl+$mod+p exec bash -c 'sleep 0.5; kill -s SIGUSR1 $(pgrep swayidle)'
 
 # 1440p monitor
 output "Unknown HP X27i CNK0191DF8" {
@@ -201,11 +203,12 @@ output "*" {
 # daemons
 exec_always --no-startup-id pkill -f ~/.config/sway/sway-blur.py; python ~/.config/sway/sway-blur.py
 exec_always pkill kanshi; exec kanshi
-exec_always pkill gammastep; exec gammastep
+exec_always --no-startup-id "sh -c 'pkill gammastep; sleep 0.1; gammastep'" 
 
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+# save file dialog
 for_window [app_id="firefox" floating] {
-    resize set 65ppt 65ppt
+    resize set 45ppt 45ppt
     move position center
 }
 
@@ -218,16 +221,11 @@ for_window [class="Vivado" title="JidePopup"] {
 }
 
 # zoom popups (eg. XXX has started sharing screen or crash report)
-for_window [title="^zoom$" app_id="^zoom$"] {
-    floating enable
-    inhibit_idle open
-}
-
-# keep screen on during zoom meeting
-for_window [title="^Zoom Meeting$"] inhibit_idle open
-# close useless zoom window
-for_window [title="^Zoom Cloud Meetings$"] kill
+for_window [title="^zoom$" app_id="^zoom$"] floating enable
 
 # keep screen on when any app is fullscreen
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
+
+# keep screen on for specific apps, should be below fullscreen
+for_window [title="^Zoom Meeting$"] inhibit_idle open
