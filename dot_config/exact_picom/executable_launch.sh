@@ -1,7 +1,7 @@
 #!/bin/bash
 
-killall -q compton
+killall -q picom
 
-while pgrep -u $UID -x compton >/dev/null; do sleep 0.2; done
+while pgrep -u $UID -x picom >/dev/null; do sleep 0.2; done
 
 picom --config ~/.config/picom/picom.conf -b &

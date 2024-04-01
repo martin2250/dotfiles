@@ -34,8 +34,10 @@ bindsym $mod+Shift+Down  move down
 bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+Shift+Home move workspace to output left
-bindsym $mod+Shift+End  move workspace to output right
+bindsym $mod+Shift+Home     move workspace to output left
+bindsym $mod+Shift+End      move workspace to output right
+bindsym $mod+Shift+PageUp   move workspace to output up
+bindsym $mod+Shift+PageDown move workspace to output down
 
 bindsym $mod+h split h
 bindsym $mod+v split v
@@ -168,9 +170,9 @@ exec xrandr --output DP-0 --primary --left-of DVI-D-0 --mode 0x1ce
 exec_always --no-startup-id setxkbmap -layout de,gr -variant nodeadkeys, -option grp:caps_switch grp_led:scroll kpdl:dot numpad:mac
 
 # background: https://triplelift.com/wp-content/uploads/2017/12/aleks-dahlberg-258314.jpg
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/aleks-dahlberg-258314.jpg
+exec_always --no-startup-id feh --bg-fill /home/martin/Pictures/aleks-dahlberg-258314.jpg
 exec_always --no-startup-id nm-applet
-# exec_always --no-startup-id ~/.config/compton/launch.sh
+exec_always --no-startup-id ~/.config/picom/launch.sh
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.config/i3/scripts/rename-workspaces.py --norenumber_workspaces --icon_list_format chemist
 

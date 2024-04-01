@@ -18,14 +18,14 @@ profile {
 
 ## both monitors in my room, left one vertical
 #profile {
-#	output "Unknown HP X27i CNK0191DF8" position 0,0 transform 90
+#	output "HP Inc. HP X27i CNK0191DF8" position 0,0 transform 90
 #	output "Philips Consumer Electronics Company 273ELH AU11226006125" position 1440,400
 #	output eDP-1 position 1440,1480
 #}
 
 # both monitors in my room, left one horizontal
 profile {
-	output "Unknown HP X27i CNK0191DF8" position 0,0
+	output "HP Inc. HP X27i CNK0191DF8" position 0,0
 	output "Philips Consumer Electronics Company 273ELH AU11226006125" position 2560,360
 	output eDP-1 position 1024,1440 scale 1.25
 }
@@ -57,8 +57,12 @@ profile {
 # office @ ETP, boss' monitor plus 1080p
 profile {
 	output eDP-1 position 640,1440
-	# output "Goldstar Company Ltd 23MB35 " position 2560,0 transform 90 # vertical
-	output "Goldstar Company Ltd 23MB35 " position 2560,360 # horizontal
+	
+	# vertical
+	# output "Goldstar Company Ltd 23MB35 " position 2560,0 transform 90
+	# horizontal
+	output "Goldstar Company Ltd 23MB35 " position 2560,360
+
 	output "Goldstar Company Ltd LG Ultra HD 0x000046BA" mode 2560x1440 position 0,0
 }
 

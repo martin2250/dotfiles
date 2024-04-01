@@ -24,12 +24,19 @@ focus_on_window_activation none
 default_border pixel 0
 
 ################################################################################
+# temp fixes
+
+# restart both monitors
+bindsym $mod+Shift+x output 'Philips Consumer Electronics Company 273ELH AU11226006125' toggle; output 'HP Inc. HP X27i CNK0191DF8' toggle
+
+################################################################################
 # windows
 
 floating_modifier $mod
 
 bindsym $mod+Return exec $terminal
 bindsym $mod+d      exec fuzzel -T 'alacritty -e'
+bindsym $mod+c      exec bemoji -t
 
 bindsym $mod+Shift+W kill
 
@@ -132,8 +139,8 @@ client.placeholder      $fg     $bg     $fg  $bg       $bg
 bindsym $mod+Shift+r reload
 
 # monitor brightness
-bindsym --locked XF86MonBrightnessUp   exec --no-startup-id light -A 5
-bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 5
+bindsym --locked XF86MonBrightnessUp   exec --no-startup-id light -T 1.1
+bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -T 0.9
 
 # audio control
 bindsym --locked XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
@@ -182,7 +189,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_model "pc105"
 	xkb_layout "de,gr"
 	xkb_variant "nodeadkeys,"
-	xkb_options "grp:caps_switch,grp_led:caps,kpdl:dot,numpad:mac"
+	xkb_options "grp:caps_switch,grp_led:caps,kpdl:dot,numpad:mac,compose:rctrl"
 }
 
 input "1267:12580:ELAN0634:00_04F3:3124_Touchpad" {
@@ -200,14 +207,16 @@ output "*" {
 }
 
 # swayidle
+# timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 set $cmd_lock 'swaylock -f -c 0000A055 -e -F -k -l'
 exec_always swayidle -w \
-    timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
     timeout 360 $cmd_lock \
-    before-sleep $cmd_lock
+    before-sleep $cmd_lock \
+    after-resume /home/martin/scripts/cycle_displays.fish
 
-bindsym $mod+p output eDP-1 toggle
-bindsym --release $mod+l exec --no-startup-id bash -c 'sleep 0.25; kill -s SIGUSR1 $(pgrep swayidle)'
+# bindsym $mod+$alt+p output * enable
+# bindsym $mod+p output eDP-1 toggle # replace this with displaykey script -> show rofu with options for all screens!!!
+# bindsym --release $mod+l exec --no-startup-id bash -c 'sleep 0.25; kill -s SIGUSR1 $(pgrep swayidle)'
 
 ################################################################################
 # window-specific settings

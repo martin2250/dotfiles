@@ -46,7 +46,9 @@
     },
     "backlight": {
         "format": "{percent}% {icon}",
-        "format-icons": [""]
+        "format-icons": [""],
+        "on-scroll-up": "light -T 1.05",
+        "on-scroll-down": "light -T 0.95"
     },
     "battery": {
         "interval": 1,

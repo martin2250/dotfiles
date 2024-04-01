@@ -1,10 +1,16 @@
 # change default behavior of shell utils
 alias ls='ls --color=auto'
-alias dd='dd status=progress'
-alias ddsync='dd status=progress conv=fdatasync'
-alias find='find 2>/dev/null'
 alias grep='grep --color=auto'
-alias sc='systemctl'
+
+abbr --add sc 'systemctl'
+abbr --add ssc 'sudo systemctl'
+abbr --add scu 'systemctl --user'
+abbr --add ddd 'sudo dd bs=32M oflag=sync status=progress'
+
+function mkdate_abbr
+	echo mkcd (date +%Y-%m-%d-%%)
+end
+abbr --add mkd --set-cursor --function mkdate_abbr
 
 # custom commands
 alias open='run xdg-open'
@@ -49,7 +55,13 @@ function ytplay
 end
 
 set -u pure_threshold_command_duration -1
-set -u pure_enable_git false
+set -u pure_enable_git true
+set -u pure_show_system_time true
+
+# todo: run process to send this signal
+function __update_time --on-signal SIGUSR1
+	commandline -f repaint
+end
 
 set -x PATH     $PATH ~/bin ~/.local/bin/ ~/.cargo/bin/
 set -x EDITOR   /usr/bin/nano
@@ -71,6 +83,16 @@ function pyc
 	set -a lines "import numpy as np"
 	set -a lines "import matplotlib.pyplot as plt"
 	set -a lines "from rich import pretty; pretty.install()"
+	set command ""
+	for line in $lines
+		set command (printf "%s%s;print('%s');" $command $line $line)
+	end
+	python -i -c "$command"
+end
+
+function pysym
+	set lines "from sympy import *"
+	set -a lines "from sympy.abc import *"
 	set command ""
 	for line in $lines
 		set command (printf "%s%s;print('%s');" $command $line $line)
