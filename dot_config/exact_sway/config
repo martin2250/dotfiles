@@ -158,7 +158,18 @@ bindsym $mod+XF86AudioLowerVolume exec --no-startup-id playerctl previous
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id playerctl next
 
 # power
-bindsym --locked XF86PowerOff exec --no-startup-id systemctl suspend
+# bindsym --locked XF86PowerOff exec --no-startup-id systemctl suspend
+# turn off non-laptop displays and then suspend
+bindsym --locked XF86PowerOff exec --no-startup-id swaymsg -t get_outputs -r | jq ".[].name" | rg -v eDP | xargs -I XX swaymsg output XX power off; exec sleep 0.5; exec systemctl suspend
+
+# swayidle
+# timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+# after-resume /home/martin/scripts/cycle_displays.fish
+set $cmd_lock 'swaylock -f -c 0000A055 -e -F -k -l'
+exec_always swayidle -w \
+    timeout 360 $cmd_lock \
+    before-sleep $cmd_lock \
+    after-resume 'swaymsg output "*" power on'
 
 # utilities
 bindsym $mod+e            exec nemo
@@ -205,14 +216,6 @@ input "1267:12580:ELAN0634:00_04F3:3124_Touchpad" {
 output "*" {
     bg /home/martin/Pictures/aleks-dahlberg-258314.jpg fill
 }
-
-# swayidle
-# timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-set $cmd_lock 'swaylock -f -c 0000A055 -e -F -k -l'
-exec_always swayidle -w \
-    timeout 360 $cmd_lock \
-    before-sleep $cmd_lock \
-    after-resume /home/martin/scripts/cycle_displays.fish
 
 # bindsym $mod+$alt+p output * enable
 # bindsym $mod+p output eDP-1 toggle # replace this with displaykey script -> show rofu with options for all screens!!!
